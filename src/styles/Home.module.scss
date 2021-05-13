@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #006491;
+    height: 70px;
+
+    img {
+      height: 70px;
+      width: 70px;
+    }
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+
+    .cardapio > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    
+    .cardapioSabor {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 170px;
+      width: 150px;
+      border: 1px solid black;
+      border-radius: 5px;
+      
+      color: #006491;
+      text-shadow: 1px 1px rgba(0, 99, 145, 0.26);
+      font-family: Roboto, sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+
+      img {
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    .pedido {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+
+      .selectqntdsabor {
+        width: 50px;
+      }
+
+      .sabores {
+        display: flex;
+    
+        .sabor {
+          display: flex;
+          flex-direction: column;
+          
+          .selectsabor {
+            margin: 10px 10px;
+            padding: 10px;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      input[type=button] {
+        margin-top: 30px;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: white;
+
+        background-color: green;
+        padding: 10px;
+        border: 0;
+        border-radius: 15px;
+        width: 200px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      input[type=button]:hover {
+        filter: brightness(0.8);
+      }
+    }
+
+    table {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid black;
+      border-radius: 5px;
+      text-align: start;
+      width: 300px;
+
+      th:nth-child(1), td:nth-child(1) {
+        display: flex;
+        align-items: center;
+        width: 75%;
+      }
+      
+      .linha {
+        border: 1px solid black;
+        width: 100%;
+      }
+      
+      tr {
+        display: flex;
+        align-items: center;
+        height: 50px;
+
+        .linhaVertical {
+          border: 1px solid black;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: whitesmoke;
+
+    p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+    }
+  }
+}
