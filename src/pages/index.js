@@ -67,7 +67,7 @@ export default function Home({pizzaList}) {
                 <div className={styles.cardapioSabor}>
                   <img src="/pizza.svg"></img>
                   <span>{cardapio.nome}</span>
-                  <span>R$ {(cardapio.valor).toFixed(2)}</span>
+                  <span>R$ {(cardapio.valor).toFixed(2).replace('.',',')}</span>
                 </div>
               )
             })}
@@ -172,7 +172,7 @@ export default function Home({pizzaList}) {
                             <tr key={pizza.id}>
                               <td>{pizza.nome}</td>
                               <div className={styles.linhaVertical}/>
-                              <td>R$ {(pizza.valor/saborPizza.length).toFixed(2)}</td>
+                              <td>R$ {(pizza.valor/saborPizza.length).toFixed(2).replace('.',',')}</td>
                             </tr>
                           </>
                         )
