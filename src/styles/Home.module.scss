@@ -9,12 +9,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #006491;
-    height: 70px;
+    background: repeating-radial-gradient(circle at center, rgb(206, 0, 0), rgb(184, 0, 0), rgb(114, 0, 0));
+    height: 100px;
+    color: white;
 
     img {
-      height: 70px;
-      width: 70px;
+      height: 100%;
+      width: 100px;
     }
   }
 
@@ -25,56 +26,117 @@
     align-items: center;
     margin-top: 50px;
 
-    .cardapio > div {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    
-    .cardapioSabor {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 170px;
-      width: 150px;
-      border: 1px solid black;
-      border-radius: 5px;
-      
-      color: #006491;
-      text-shadow: 1px 1px rgba(0, 99, 145, 0.26);
-      font-family: Roboto, sans-serif;
-      font-weight: 600;
-      font-size: 1.25rem;
-
-      img {
-        height: 100px;
-        width: 100px;
-      }
-    }
-
-    .pedido {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-
-      .selectqntdsabor {
-        width: 50px;
-      }
-
-      .sabores {
+    .cardapio {
+  
+      .listacardapio {
         display: flex;
-    
-        .sabor {
+        flex-wrap: wrap;
+        gap: 5px;
+
+        .cardapioSabor {
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 170px;
+          width: 150px;
+          border: 1px solid black;
+          border-radius: 5px;
           
-          .selectsabor {
-            margin: 10px 10px;
-            padding: 10px;
-            border-radius: 5px;
+          color: #006491;
+          text-shadow: 1px 1px rgba(0, 99, 145, 0.26);
+          font-weight: 600;
+          font-size: 1.25rem;
+  
+          img {
+            height: 100px;
+            width: 100px;
           }
+        }
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 40px;
+
+      .pedido {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+
+        .listagem {
+          border: 1px solid black;
+          border-radius: 5px;
+          padding: 10px;
+          width: 30%;
+          min-width: 300px;
+          margin-left: 30px;
+
+          .selectqntdsabor {
+            width: 50px;
+          }
+    
+          .sabores {
+            display: flex;
+            flex-direction: column;
+        
+            .sabor {
+              display: flex;
+              flex-direction: column;
+              
+              .selectsabor {
+                margin: 10px 10px;
+                padding: 10px;
+                border-radius: 5px;
+              }
+            }
+          }
+        }
+
+        .resultado {
+          margin-left: 30px;
+          table {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid black;
+            border-radius: 5px;
+            text-align: start;
+            width: 300px;
+      
+            th:nth-child(1), td:nth-child(1) {
+              display: flex;
+              align-items: center;
+              width: 75%;
+            }
+            
+            .linha {
+              border: 1px solid black;
+              width: 100%;
+            }
+            
+            tr {
+              display: flex;
+              align-items: center;
+              height: 50px;
+      
+              .linhaVertical {
+                border: 1px solid black;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      .promocoes {
+        flex: 1;
+
+        img {
+          height: 500px;
+          width: 500px;
         }
       }
 
@@ -98,36 +160,6 @@
       }
     }
 
-    table {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid black;
-      border-radius: 5px;
-      text-align: start;
-      width: 300px;
-
-      th:nth-child(1), td:nth-child(1) {
-        display: flex;
-        align-items: center;
-        width: 75%;
-      }
-      
-      .linha {
-        border: 1px solid black;
-        width: 100%;
-      }
-      
-      tr {
-        display: flex;
-        align-items: center;
-        height: 50px;
-
-        .linhaVertical {
-          border: 1px solid black;
-          height: 100%;
-        }
-      }
-    }
   }
 
   .footer {

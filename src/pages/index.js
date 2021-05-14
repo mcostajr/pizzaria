@@ -57,140 +57,145 @@ export default function Home({pizzaList}) {
       </Head>
       <header className={styles.header}>
         <img src="/logo.png"></img>
-        <h1>Pizzaria do seu Zé</h1>
+        <h1>Bag Pizza</h1>
       </header>
       <main className={styles.main}>
         <div className={styles.cardapio}>
-          <div>
+          <div className={styles.listacardapio}>
             {pizzaList.map(cardapio => {
               return (
                 <div className={styles.cardapioSabor}>
-                  <img src="/pizza.png"></img>
+                  <img src="/pizza.svg"></img>
                   <span>{cardapio.nome}</span>
-                  <span>R$ {cardapio.valor}</span>
+                  <span>R$ {(cardapio.valor).toFixed(2)}</span>
                 </div>
               )
             })}
           </div>
         </div>
-        <div className={styles.pedido}>
-          <h3>Quantidade de Sabores ?</h3>
-          <select 
-            onChange={e => qntSaborPizza(e)}
-            name="qntSabor"
-            className={styles.selectqntdsabor}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          
-          <h3>Sabor da Pizza ?</h3>
-          <div className={styles.sabores}>
-            <div className={styles.sabor}>
-              <strong>Sabor 1</strong>
+        <div className={styles.wrapper}>
+          <div className={styles.pedido}>
+            <div className={styles.listagem}>
+              <h3>Quantidade de Sabores</h3>
               <select 
-                onChange={sabor => handleSaborChange(sabor, 0)}
-                name="saborPizza"
-                className={styles.selectsabor}
+                onChange={e => qntSaborPizza(e)}
+                name="qntSabor"
+                className={styles.selectqntdsabor}
               >
-                <option value="" selected disabled hidden>- Selecione o Sabor -</option>
-                {pizzaList.map((pizza, index) => {
-                  return (
-                    <option key={pizza.id} value={index}>{pizza.nome}</option>
-                  )
-                })}
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </select>
+              
+              {qntSabor > 1 ? <h3>Sabores da Pizza</h3> : <h3>Sabor da Pizza</h3>}
+              <div className={styles.sabores}>
+                <div className={styles.sabor}>
+                  <select 
+                    onChange={sabor => handleSaborChange(sabor, 0)}
+                    name="saborPizza"
+                    className={styles.selectsabor}
+                  >
+                    <option selected disabled hidden>- Selecione o Sabor -</option>
+                    {pizzaList.map((pizza, index) => {
+                      return (
+                        <option key={pizza.id} value={index}>{pizza.nome}</option>
+                      )
+                    })}
+                  </select>
+                </div>
+                {qntSabor > 1 ? 
+                  (
+                    <div className={styles.sabor}>
+                      <select 
+                        onChange={sabor => handleSaborChange(sabor, 1)} 
+                        name="saborPizza2"
+                        className={styles.selectsabor}
+                      >
+                        <option selected disabled hidden>- Selecione o Sabor -</option>
+                        {pizzaList.map((pizza, index) => {
+                          return (
+                            <option key={pizza.id} value={index}>{pizza.nome}</option>
+                          )
+                        })}
+                      </select>
+                    </div>
+                  )
+                  :
+                  (
+                    <>
+                    </>
+                  )
+                }
+                {qntSabor > 2 ? 
+                  (
+                    <div className={styles.sabor}>
+                      <select 
+                        onChange={sabor => handleSaborChange(sabor, 2)} 
+                        name="saborPizza3"
+                        className={styles.selectsabor}
+                      >
+                        <option selected disabled hidden>- Selecione o Sabor -</option>
+                        {pizzaList.map((pizza, index) => {
+                          return (
+                            <option key={pizza.id} value={index}>{pizza.nome}</option>
+                          )
+                        })}
+                      </select>
+                    </div>
+                  )
+                  :
+                  (
+                    <>
+                    </>
+                  )
+                }
+              </div>
+              <input type="button" onClick={montarPizza} value="Montar Pizza"/>
             </div>
-            {qntSabor > 1 ? 
-              (
-                <div className={styles.sabor}>
-                  <strong>Sabor 2</strong>
-                  <select 
-                    onChange={sabor => handleSaborChange(sabor, 1)} 
-                    name="saborPizza2"
-                    className={styles.selectsabor}
-                  >
-                    <option value="" selected disabled hidden>- Selecione o Sabor -</option>
-                    {pizzaList.map((pizza, index) => {
-                      return (
-                        <option key={pizza.id} value={index}>{pizza.nome}</option>
-                      )
-                    })}
-                  </select>
-                </div>
-              )
-              :
-              (
+            <div className={styles.resultado}>
+              {isPizzaComplet ? (
                 <>
+                <h3>Valor do Pedido</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Sabor</th>
+                      <div className={styles.linhaVertical}/>
+                      <th>Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {saborPizza.map(pizza => {
+                        return (
+                          <>
+                            <div className={styles.linha}/>
+                            <tr key={pizza.id}>
+                              <td>{pizza.nome}</td>
+                              <div className={styles.linhaVertical}/>
+                              <td>R$ {(pizza.valor/saborPizza.length).toFixed(2)}</td>
+                            </tr>
+                          </>
+                        )
+                      })}
+                      <div className={styles.linha}/>
+                      <tr>
+                        <td>Subtotal</td>
+                        <td>R$ {subTotal}</td>
+                      </tr>
+                  </tbody>
+                </table>
                 </>
               )
-            }
-            {qntSabor > 2 ? 
-              (
-                <div className={styles.sabor}>
-                  <strong>Sabor 3</strong>
-                  <select 
-                    onChange={sabor => handleSaborChange(sabor, 2)} 
-                    name="saborPizza3"
-                    className={styles.selectsabor}
-                  >
-                    <option value="" selected disabled hidden>- Selecione o Sabor -</option>
-                    {pizzaList.map((pizza, index) => {
-                      return (
-                        <option key={pizza.id} value={index}>{pizza.nome}</option>
-                      )
-                    })}
-                  </select>
-                </div>
-              )
-              :
-              (
+                : (
                 <>
                 </>
-              )
-            }
+                )
+              }
+            </div>
           </div>
-
-          <input type="button" onClick={montarPizza} value="Montar Pizza"/>
-        </div>
-        <div className={styles.resultado}>
-          <h3>Valor da Pizza ?</h3>
-          {isPizzaComplet ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Sabor</th>
-                  <div className={styles.linhaVertical}/>
-                  <th>Valor</th>
-                </tr>
-              </thead>
-              <tbody>
-                  {saborPizza.map(pizza => {
-                    return (
-                      <>
-                        <div className={styles.linha}/>
-                        <tr key={pizza.id}>
-                          <td>{pizza.nome}</td>
-                          <div className={styles.linhaVertical}/>
-                          <td>R$ {pizza.valor}</td>
-                        </tr>
-                      </>
-                    )
-                  })}
-                  <div className={styles.linha}/>
-                  <tr>
-                    <td>Subtotal</td>
-                    <td>R$ {subTotal}</td>
-                  </tr>
-              </tbody>
-            </table>
-          )
-            : (
-            <>
-            </>
-            )
-          }
+          <div className={styles.promocoes}>
+              <img src="/promocao.jpg"></img>
+            </div>
         </div>
       </main>
     </div>
