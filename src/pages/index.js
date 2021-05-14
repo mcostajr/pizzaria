@@ -43,7 +43,6 @@ export default function Home({pizzaList}) {
 
   function calculoPizza(saborPizza) {
     let soma = 0
-    console.log(saborPizza.length)
     {saborPizza.map(sabores => {
       soma += sabores.valor / saborPizza.length
       setSubTotal(soma.toFixed(2))
@@ -64,7 +63,7 @@ export default function Home({pizzaList}) {
           <div className={styles.listacardapio}>
             {pizzaList.map(cardapio => {
               return (
-                <div className={styles.cardapioSabor}>
+                <div key={cardapio.id} className={styles.cardapioSabor}>
                   <img src="/pizza.svg"></img>
                   <span>{cardapio.nome}</span>
                   <span>R$ {(cardapio.valor).toFixed(2).replace('.',',')}</span>
