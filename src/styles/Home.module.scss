@@ -1,6 +1,4 @@
 .container {
-  display: flex;
-  flex-direction: column;
   text-align: center;
   height: 100vh;
   width: 100vw;
@@ -10,8 +8,13 @@
     align-items: center;
     justify-content: center;
     background: repeating-radial-gradient(circle at center, rgb(206, 0, 0), rgb(184, 0, 0), rgb(114, 0, 0));
-    height: 100px;
+    height: 10vh;
+    min-height: 10vh;
     color: white;
+
+    li {
+      font-weight: 600;
+    }
 
     img {
       height: 100%;
@@ -20,52 +23,18 @@
   }
 
   .main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-
-    .cardapio {
-  
-      .listacardapio {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-
-        .cardapioSabor {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          height: 170px;
-          width: 150px;
-          border: 1px solid black;
-          border-radius: 5px;
-          
-          color: #006491;
-          text-shadow: 1px 1px rgba(0, 99, 145, 0.26);
-          font-weight: 600;
-          font-size: 1.25rem;
-  
-          img {
-            height: 100px;
-            width: 100px;
-          }
-        }
-      }
-    }
+    display: contents;
+    height: 90vh;
 
     .wrapper {
       display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      margin-top: 40px;
+      height: 90vh;
+      width: 85vw;
+      justify-content: center;
+      align-items: center;
 
       .pedido {
         display: flex;
-        flex-wrap: wrap;
-        width: 50%;
 
         .listagem {
           border: 1px solid black;
@@ -95,71 +64,62 @@
             }
           }
         }
-
-        .resultado {
-          margin-left: 30px;
-          table {
-            display: flex;
-            flex-direction: column;
-            border: 2px solid black;
-            border-radius: 5px;
-            text-align: start;
-            width: 300px;
-      
-            th:nth-child(1), td:nth-child(1) {
-              display: flex;
-              align-items: center;
-              width: 75%;
-            }
-            
-            .linha {
-              border: 1px solid black;
-              width: 100%;
-            }
-            
-            tr {
-              display: flex;
-              align-items: center;
-              height: 50px;
-      
-              .linhaVertical {
-                border: 1px solid black;
-                height: 100%;
-              }
-            }
-          }
-        }
-      }
-
-      .promocoes {
-        flex: 1;
-
-        img {
-          height: 500px;
-          width: 500px;
-        }
-      }
-
-      input[type=button] {
-        margin-top: 30px;
-        font-size: 1.15rem;
-        font-weight: 600;
-        color: white;
-
-        background-color: green;
-        padding: 10px;
-        border: 0;
-        border-radius: 15px;
-        width: 200px;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-
-      input[type=button]:hover {
-        filter: brightness(0.8);
       }
     }
 
+    .resultado {
+      position: absolute;
+      right: 0;
+      top: 10vh;
+      height: 90vh;
+      width: 15vw;
+
+      border-left: 1px solid gray;
+
+      table {
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        text-align: start;
+  
+        th:nth-child(1), td:nth-child(1) {
+          display: flex;
+          align-items: center;
+          width: 75%;
+        }
+        
+        .linha {
+          border: 1px solid black;
+          width: 100%;
+        }
+        
+        tr {
+          display: flex;
+          align-items: center;
+          height: 50px;
+  
+        }
+      }
+    }
+
+    input[type=button] {
+      margin-top: 30px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: white;
+
+      background-color: green;
+      padding: 10px;
+      border: 0;
+      border-radius: 15px;
+      width: 200px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    input[type=button]:hover {
+      filter: brightness(0.8);
+    }
   }
 
   .footer {

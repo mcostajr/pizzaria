@@ -55,23 +55,11 @@ export default function Home({pizzaList}) {
         <title>Pizza App</title>
       </Head>
       <header className={styles.header}>
-        <img src="/logo.png"></img>
-        <h1>Bag Pizza</h1>
+          <img src="/logo.png"></img>
+          <h1>Bag Pizza</h1>
       </header>
       <main className={styles.main}>
-        <div className={styles.cardapio}>
-          <div className={styles.listacardapio}>
-            {pizzaList.map(cardapio => {
-              return (
-                <div key={cardapio.id} className={styles.cardapioSabor}>
-                  <img src="/pizza.svg"></img>
-                  <span>{cardapio.nome}</span>
-                  <span>R$ {(cardapio.valor).toFixed(2).replace('.',',')}</span>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+        
         <div className={styles.wrapper}>
           <div className={styles.pedido}>
             <div className={styles.listagem}>
@@ -151,51 +139,48 @@ export default function Home({pizzaList}) {
               </div>
               <input type="button" onClick={montarPizza} value="Montar Pizza"/>
             </div>
-            <div className={styles.resultado}>
-              {isPizzaComplet ? (
-                <>
-                <h3>Valor do Pedido</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Sabor</th>
-                      <div className={styles.linhaVertical}/>
-                      <th>Valor</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      {saborPizza.map(pizza => {
-                        return (
-                          <>
-                            <div className={styles.linha}/>
-                            <tr key={pizza.id}>
-                              <td>{pizza.nome}</td>
-                              <div className={styles.linhaVertical}/>
-                              <td>R$ {(pizza.valor/saborPizza.length).toFixed(2).replace('.',',')}</td>
-                            </tr>
-                          </>
-                        )
-                      })}
-                      <div className={styles.linha}/>
-                      <tr>
-                        <td>Subtotal</td>
-                        <td>R$ {subTotal}</td>
-                      </tr>
-                  </tbody>
-                </table>
-                </>
-              )
-                : (
-                <>
-                </>
-                )
-              }
-            </div>
           </div>
-          <div className={styles.promocoes}>
-              <img src="/promocao.jpg"></img>
-            </div>
         </div>
+        <div className={styles.resultado}>
+              <>
+              <h3>Pedido</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sabor</th>
+                    <div className={styles.linhaVertical}/>
+                    <th>Valor</th>
+                  </tr>
+                </thead>
+                {isPizzaComplet ? (
+                <tbody>
+                    {saborPizza.map(pizza => {
+                      return (
+                        <>
+                          <div className={styles.linha}/>
+                          <tr key={pizza.id}>
+                            <td>{pizza.nome}</td>
+                            <div className={styles.linhaVertical}/>
+                            <td>R$ {(pizza.valor/saborPizza.length).toFixed(2).replace('.',',')}</td>
+                          </tr>
+                        </>
+                      )
+                    })}
+                    <div className={styles.linha}/>
+                    <tr>
+                      <td>Subtotal</td>
+                      <td>R$ {subTotal}</td>
+                    </tr>
+                </tbody>
+                 )
+                 : (
+                 <>
+                 </>
+                 )
+               }
+              </table>
+              </>
+          </div>
       </main>
     </div>
   )
